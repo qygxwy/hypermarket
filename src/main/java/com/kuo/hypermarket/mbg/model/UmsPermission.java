@@ -1,72 +1,37 @@
 package com.kuo.hypermarket.mbg.model;
 
+import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.util.Date;
 
 public class UmsPermission implements Serializable {
     private Long id;
 
-    /**
-     * 父级权限id
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "父级权限id")
     private Long pid;
 
-    /**
-     * 名称
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "名称")
     private String name;
 
-    /**
-     * 权限值
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "权限值")
     private String value;
 
-    /**
-     * 图标
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "图标")
     private String icon;
 
-    /**
-     * 权限类型：0->目录；1->菜单；2->按钮（接口绑定权限）
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "权限类型：0->目录；1->菜单；2->按钮（接口绑定权限）")
     private Integer type;
 
-    /**
-     * 前端资源路径
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "前端资源路径")
     private String uri;
 
-    /**
-     * 启用状态；0->禁用；1->启用
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "启用状态；0->禁用；1->启用")
     private Integer status;
 
-    /**
-     * 创建时间
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "创建时间")
     private Date createTime;
 
-    /**
-     * 排序
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "排序")
     private Integer sort;
 
     private static final long serialVersionUID = 1L;

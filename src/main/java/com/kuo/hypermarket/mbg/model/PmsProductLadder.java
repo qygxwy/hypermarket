@@ -1,5 +1,6 @@
 package com.kuo.hypermarket.mbg.model;
 
+import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -8,25 +9,13 @@ public class PmsProductLadder implements Serializable {
 
     private Long productId;
 
-    /**
-     * 满足的商品数量
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "满足的商品数量")
     private Integer count;
 
-    /**
-     * 折扣
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "折扣")
     private BigDecimal discount;
 
-    /**
-     * 折后价格
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "折后价格")
     private BigDecimal price;
 
     private static final long serialVersionUID = 1L;

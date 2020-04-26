@@ -1,5 +1,6 @@
 package com.kuo.hypermarket.mbg.model;
 
+import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -17,11 +18,7 @@ public class PmsProductOperateLog implements Serializable {
 
     private BigDecimal salePriceNew;
 
-    /**
-     * 赠送的积分
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "赠送的积分")
     private Integer giftPointOld;
 
     private Integer giftPointNew;
@@ -30,11 +27,7 @@ public class PmsProductOperateLog implements Serializable {
 
     private Integer usePointLimitNew;
 
-    /**
-     * 操作人
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "操作人")
     private String operateMan;
 
     private Date createTime;

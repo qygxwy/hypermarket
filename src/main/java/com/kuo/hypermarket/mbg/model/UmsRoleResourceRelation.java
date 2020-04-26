@@ -1,22 +1,15 @@
 package com.kuo.hypermarket.mbg.model;
 
+import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 public class UmsRoleResourceRelation implements Serializable {
     private Long id;
 
-    /**
-     * 角色ID
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "角色ID")
     private Long roleId;
 
-    /**
-     * 资源ID
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "资源ID")
     private Long resourceId;
 
     private static final long serialVersionUID = 1L;

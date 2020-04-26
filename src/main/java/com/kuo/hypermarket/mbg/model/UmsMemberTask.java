@@ -1,5 +1,6 @@
 package com.kuo.hypermarket.mbg.model;
 
+import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 public class UmsMemberTask implements Serializable {
@@ -7,25 +8,13 @@ public class UmsMemberTask implements Serializable {
 
     private String name;
 
-    /**
-     * 赠送成长值
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "赠送成长值")
     private Integer growth;
 
-    /**
-     * 赠送积分
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "赠送积分")
     private Integer intergration;
 
-    /**
-     * 任务类型：0->新手任务；1->日常任务
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "任务类型：0->新手任务；1->日常任务")
     private Integer type;
 
     private static final long serialVersionUID = 1L;

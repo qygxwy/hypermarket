@@ -2,6 +2,7 @@ package com.kuo.hypermarket.mbg.mapper;
 
 import com.kuo.hypermarket.mbg.model.UmsAdminLoginLog;
 import com.kuo.hypermarket.mbg.model.UmsAdminLoginLogExample;
+import io.swagger.annotations.ApiModelProperty;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

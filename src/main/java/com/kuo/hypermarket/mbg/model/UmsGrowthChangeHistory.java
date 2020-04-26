@@ -1,5 +1,6 @@
 package com.kuo.hypermarket.mbg.model;
 
+import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -10,39 +11,19 @@ public class UmsGrowthChangeHistory implements Serializable {
 
     private Date createTime;
 
-    /**
-     * 改变类型：0->增加；1->减少
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "改变类型：0->增加；1->减少")
     private Integer changeType;
 
-    /**
-     * 积分改变数量
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "积分改变数量")
     private Integer changeCount;
 
-    /**
-     * 操作人员
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "操作人员")
     private String operateMan;
 
-    /**
-     * 操作备注
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "操作备注")
     private String operateNote;
 
-    /**
-     * 积分来源：0->购物；1->管理员修改
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "积分来源：0->购物；1->管理员修改")
     private Integer sourceType;
 
     private static final long serialVersionUID = 1L;

@@ -1,5 +1,6 @@
 package com.kuo.hypermarket.mbg.model;
 
+import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -8,11 +9,7 @@ public class SmsHomeAdvertise implements Serializable {
 
     private String name;
 
-    /**
-     * 轮播位置：0->PC首页轮播；1->app首页轮播
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "轮播位置：0->PC首页轮播；1->app首页轮播")
     private Integer type;
 
     private String pic;
@@ -21,46 +18,22 @@ public class SmsHomeAdvertise implements Serializable {
 
     private Date endTime;
 
-    /**
-     * 上下线状态：0->下线；1->上线
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "上下线状态：0->下线；1->上线")
     private Integer status;
 
-    /**
-     * 点击数
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "点击数")
     private Integer clickCount;
 
-    /**
-     * 下单数
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "下单数")
     private Integer orderCount;
 
-    /**
-     * 链接地址
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "链接地址")
     private String url;
 
-    /**
-     * 备注
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "备注")
     private String note;
 
-    /**
-     * 排序
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "排序")
     private Integer sort;
 
     private static final long serialVersionUID = 1L;

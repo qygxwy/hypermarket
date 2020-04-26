@@ -1,5 +1,6 @@
 package com.kuo.hypermarket.mbg.model;
 
+import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -14,11 +15,7 @@ public class UmsMemberLoginLog implements Serializable {
 
     private String city;
 
-    /**
-     * 登录类型：0->PC；1->android;2->ios;3->小程序
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "登录类型：0->PC；1->android;2->ios;3->小程序")
     private Integer loginType;
 
     private String province;

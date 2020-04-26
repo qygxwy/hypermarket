@@ -1,5 +1,6 @@
 package com.kuo.hypermarket.mbg.model;
 
+import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 public class UmsMemberReceiveAddress implements Serializable {
@@ -7,55 +8,27 @@ public class UmsMemberReceiveAddress implements Serializable {
 
     private Long memberId;
 
-    /**
-     * 收货人名称
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "收货人名称")
     private String name;
 
     private String phoneNumber;
 
-    /**
-     * 是否为默认
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "是否为默认")
     private Integer defaultStatus;
 
-    /**
-     * 邮政编码
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "邮政编码")
     private String postCode;
 
-    /**
-     * 省份/直辖市
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "省份/直辖市")
     private String province;
 
-    /**
-     * 城市
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "城市")
     private String city;
 
-    /**
-     * 区
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "区")
     private String region;
 
-    /**
-     * 详细地址(街道)
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "详细地址(街道)")
     private String detailAddress;
 
     private static final long serialVersionUID = 1L;

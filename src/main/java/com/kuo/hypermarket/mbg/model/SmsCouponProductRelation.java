@@ -1,5 +1,6 @@
 package com.kuo.hypermarket.mbg.model;
 
+import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 public class SmsCouponProductRelation implements Serializable {
@@ -9,18 +10,10 @@ public class SmsCouponProductRelation implements Serializable {
 
     private Long productId;
 
-    /**
-     * 商品名称
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "商品名称")
     private String productName;
 
-    /**
-     * 商品编码
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "商品编码")
     private String productSn;
 
     private static final long serialVersionUID = 1L;

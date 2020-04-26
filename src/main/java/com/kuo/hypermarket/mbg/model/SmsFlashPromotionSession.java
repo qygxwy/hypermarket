@@ -1,49 +1,26 @@
 package com.kuo.hypermarket.mbg.model;
 
+import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.util.Date;
 
 public class SmsFlashPromotionSession implements Serializable {
-    /**
-     * 编号
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "编号")
     private Long id;
 
-    /**
-     * 场次名称
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "场次名称")
     private String name;
 
-    /**
-     * 每日开始时间
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "每日开始时间")
     private Date startTime;
 
-    /**
-     * 每日结束时间
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "每日结束时间")
     private Date endTime;
 
-    /**
-     * 启用状态：0->不启用；1->启用
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "启用状态：0->不启用；1->启用")
     private Integer status;
 
-    /**
-     * 创建时间
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "创建时间")
     private Date createTime;
 
     private static final long serialVersionUID = 1L;

@@ -1,5 +1,6 @@
 package com.kuo.hypermarket.mbg.model;
 
+import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -8,62 +9,30 @@ public class PmsSkuStock implements Serializable {
 
     private Long productId;
 
-    /**
-     * sku编码
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "sku编码")
     private String skuCode;
 
     private BigDecimal price;
 
-    /**
-     * 库存
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "库存")
     private Integer stock;
 
-    /**
-     * 预警库存
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "预警库存")
     private Integer lowStock;
 
-    /**
-     * 展示图片
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "展示图片")
     private String pic;
 
-    /**
-     * 销量
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "销量")
     private Integer sale;
 
-    /**
-     * 单品促销价格
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "单品促销价格")
     private BigDecimal promotionPrice;
 
-    /**
-     * 锁定库存
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "锁定库存")
     private Integer lockStock;
 
-    /**
-     * 商品销售属性，json格式
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "商品销售属性，json格式")
     private String spData;
 
     private static final long serialVersionUID = 1L;

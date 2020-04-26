@@ -1,5 +1,6 @@
 package com.kuo.hypermarket.mbg.model;
 
+import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -14,11 +15,7 @@ public class SmsFlashPromotionLog implements Serializable {
 
     private String productName;
 
-    /**
-     * 会员订阅时间
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "会员订阅时间")
     private Date subscribeTime;
 
     private Date sendTime;

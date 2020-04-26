@@ -1,30 +1,19 @@
 package com.kuo.hypermarket.mbg.model;
 
+import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.util.Date;
 
 public class UmsResourceCategory implements Serializable {
     private Long id;
 
-    /**
-     * 创建时间
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "创建时间")
     private Date createTime;
 
-    /**
-     * 分类名称
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "分类名称")
     private String name;
 
-    /**
-     * 排序
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "排序")
     private Integer sort;
 
     private static final long serialVersionUID = 1L;

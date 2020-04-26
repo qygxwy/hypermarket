@@ -1,5 +1,6 @@
 package com.kuo.hypermarket.mbg.model;
 
+import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -8,32 +9,16 @@ public class SmsFlashPromotion implements Serializable {
 
     private String title;
 
-    /**
-     * 开始日期
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "开始日期")
     private Date startDate;
 
-    /**
-     * 结束日期
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "结束日期")
     private Date endDate;
 
-    /**
-     * 上下线状态
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "上下线状态")
     private Integer status;
 
-    /**
-     * 秒杀时间段名称
-     *
-     * @mbg.generated
-     */
+    @ApiModelProperty(value = "秒杀时间段名称")
     private Date createTime;
 
     private static final long serialVersionUID = 1L;
