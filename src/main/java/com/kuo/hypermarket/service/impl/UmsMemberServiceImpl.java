@@ -10,7 +10,7 @@ import com.kuo.hypermarket.mbg.model.UmsMemberLevel;
 import com.kuo.hypermarket.mbg.model.UmsMemberLevelExample;
 import com.kuo.hypermarket.service.RedisService;
 import com.kuo.hypermarket.service.UmsMemberService;
-//import com.kuo.hypermarket.util.JwtTokenUtil;
+import com.kuo.hypermarket.util.JwtTokenUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,10 +42,10 @@ import java.util.Random;
 @Service
 public class UmsMemberServiceImpl implements UmsMemberService {
     private static final Logger LOGGER = LoggerFactory.getLogger(UmsMemberServiceImpl.class);
-//    @Autowired
-//    private PasswordEncoder passwordEncoder;
-//    @Autowired
-//    private JwtTokenUtil jwtTokenUtil;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+    @Autowired
+    private JwtTokenUtil jwtTokenUtil;
     @Autowired
     private UmsMemberMapper memberMapper;
     @Autowired
@@ -91,7 +91,7 @@ public class UmsMemberServiceImpl implements UmsMemberService {
         UmsMember umsMember = new UmsMember();
         umsMember.setUsername(username);
         umsMember.setPhone(telephone);
-//        umsMember.setPassword(passwordEncoder.encode(password));
+        umsMember.setPassword(passwordEncoder.encode(password));
         umsMember.setCreateTime(new Date());
         umsMember.setStatus(1);
         //获取默认会员等级并设置
@@ -131,7 +131,7 @@ public class UmsMemberServiceImpl implements UmsMemberService {
             Asserts.fail("验证码错误");
         }
         UmsMember umsMember = memberList.get(0);
-//        umsMember.setPassword(passwordEncoder.encode(password));
+        umsMember.setPassword(passwordEncoder.encode(password));
         memberMapper.updateByPrimaryKeySelective(umsMember);
     }
 
@@ -166,12 +166,12 @@ public class UmsMemberServiceImpl implements UmsMemberService {
         //密码需要客户端加密后传递
         try {
             UserDetails userDetails = loadUserByUsername(username);
-//            if(!passwordEncoder.matches(password,userDetails.getPassword())){
-//                throw new BadCredentialsException("密码不正确");
-//            }
+            if(!passwordEncoder.matches(password,userDetails.getPassword())){
+                throw new BadCredentialsException("密码不正确");
+            }
             UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
             SecurityContextHolder.getContext().setAuthentication(authentication);
-//            token = jwtTokenUtil.generateToken(userDetails);
+            token = jwtTokenUtil.generateToken(userDetails);
         } catch (AuthenticationException e) {
             LOGGER.warn("登录异常:{}", e.getMessage());
         }
@@ -180,7 +180,7 @@ public class UmsMemberServiceImpl implements UmsMemberService {
 
     @Override
     public String refreshToken(String token) {
-        return null;//jwtTokenUtil.refreshHeadToken(token);
+        return jwtTokenUtil.refreshHeadToken(token);
     }
 
     //对输入的验证码进行校验
