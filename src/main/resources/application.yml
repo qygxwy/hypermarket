@@ -21,6 +21,7 @@ spring:
 
 mybatis:
   mapper-locations: classpath:mapping/*.xml
+  type-aliases-package: com.kuo.hypermarket.mbg.model
 
 # 自定义redis key
 redis:
