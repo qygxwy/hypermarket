@@ -8,7 +8,6 @@
     </option>
   </component>
   <component name="ProjectPlainTextFileTypeManager">
-    <file url="file://$PROJECT_DIR$/src/main/resources/mapper/CmsHelpCategoryMapper.xml" />
     <file url="file://$PROJECT_DIR$/src/main/resources/mapper/CmsHelpMapper.xml" />
     <file url="file://$PROJECT_DIR$/src/main/resources/mapper/CmsMemberReportMapper.xml" />
     <file url="file://$PROJECT_DIR$/src/main/resources/mapper/CmsPrefrenceAreaMapper.xml" />
@@ -68,7 +67,6 @@
     <file url="file://$PROJECT_DIR$/src/main/resources/mapper/UmsIntegrationConsumeSettingMapper.xml" />
     <file url="file://$PROJECT_DIR$/src/main/resources/mapper/UmsMemberLevelMapper.xml" />
     <file url="file://$PROJECT_DIR$/src/main/resources/mapper/UmsMemberLoginLogMapper.xml" />
-    <file url="file://$PROJECT_DIR$/src/main/resources/mapper/UmsMemberMapper.xml" />
     <file url="file://$PROJECT_DIR$/src/main/resources/mapper/UmsMemberMemberTagRelationMapper.xml" />
     <file url="file://$PROJECT_DIR$/src/main/resources/mapper/UmsMemberProductCategoryRelationMapper.xml" />
     <file url="file://$PROJECT_DIR$/src/main/resources/mapper/UmsMemberReceiveAddressMapper.xml" />

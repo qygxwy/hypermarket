@@ -50,13 +50,13 @@ public class UmsMemberController {
     @ResponseBody
     public CommonResult login(@RequestParam String username,
                               @RequestParam String password) {
-//        String token = memberService.login(username, password);
-//        if (token == null) {
-//            return CommonResult.validateFailed("用户名或密码错误");
-//        }
+        String token = memberService.login(username, password);
+        if (token == null) {
+            return CommonResult.validateFailed("用户名或密码错误");
+        }
         Map<String, String> tokenMap = new HashMap<>();
-//        tokenMap.put("token", token);
-//        tokenMap.put("tokenHead", tokenHead);
+        tokenMap.put("token", token);
+        tokenMap.put("tokenHead", tokenHead);
         return CommonResult.success(tokenMap);
     }
 
