@@ -76,6 +76,21 @@
             <version>1.4.0</version>
         </dependency>
 
+        <!-- mybatis plus 自动生成器 -->
+        <!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-generator -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-generator</artifactId>
+            <version>3.3.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.velocity/velocity-engine-core -->
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity-engine-core</artifactId>
+            <version>2.2</version>
+        </dependency>
+
+
         <!-- Mysql数据库驱动 -->
         <dependency>
             <groupId>mysql</groupId>
