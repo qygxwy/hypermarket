@@ -2,18 +2,19 @@ package com.kuo.hypermarket.service.impl;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.github.pagehelper.PageHelper;
 import com.kuo.hypermarket.dao.UmsAdminPermissionRelationDao;
 import com.kuo.hypermarket.dao.UmsAdminRoleRelationDao;
 import com.kuo.hypermarket.dto.AdminUserDetails;
 import com.kuo.hypermarket.dto.UmsAdminParam;
 import com.kuo.hypermarket.dto.UpdateAdminPasswordParam;
+import com.kuo.hypermarket.mapper.UmsAdminMapper;
+import com.kuo.hypermarket.service.UmsAdminService;
 import com.kuo.hypermarket.mbg.mapper.UmsAdminLoginLogMapper;
-import com.kuo.hypermarket.mbg.mapper.UmsAdminMapper;
 import com.kuo.hypermarket.mbg.mapper.UmsAdminPermissionRelationMapper;
 import com.kuo.hypermarket.mbg.mapper.UmsAdminRoleRelationMapper;
-import com.kuo.hypermarket.mbg.model.*;
-import com.kuo.hypermarket.service.UmsAdminService;
+import com.kuo.hypermarket.entity.*;
 import com.kuo.hypermarket.util.JwtTokenUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,21 +40,22 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * @author wangfangfang
- * @Title: UmsAdminServiceImpl
- * @Description: UmsAdminService实现类
- * @date 2020/4/2710:45 下午
- * @since 1.8
+ * <p>
+ * 后台用户表 服务实现类
+ * </p>
+ *
+ * @author qygxwy
+ * @since 2020-05-05
  */
 @Service
-public class UmsAdminServiceImpl implements UmsAdminService {
-    private static final Logger LOGGER = LoggerFactory.getLogger(UmsAdminServiceImpl.class);
+public class UmsAdminServiceImpl extends ServiceImpl<UmsAdminMapper, UmsAdmin> implements UmsAdminService {
+    private static final Logger LOGGER = LoggerFactory.getLogger(com.kuo.hypermarket.service.impl.UmsAdminServiceImpl.class);
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
     @Autowired
     private PasswordEncoder passwordEncoder;
     @Autowired
-    private UmsAdminMapper adminMapper;
+    private com.kuo.hypermarket.mbg.mapper.UmsAdminMapper adminMapper;
     @Autowired
     private UmsAdminRoleRelationMapper adminRoleRelationMapper;
     @Autowired
@@ -263,7 +265,7 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     @Override
     public int updatePassword(UpdateAdminPasswordParam param) {
         if(StrUtil.isEmpty(param.getUsername())
-                ||StrUtil.isEmpty(param.getOldPassword())
+                || StrUtil.isEmpty(param.getOldPassword())
                 ||StrUtil.isEmpty(param.getNewPassword())){
             return -1;
         }
@@ -292,4 +294,5 @@ public class UmsAdminServiceImpl implements UmsAdminService {
         }
         throw new UsernameNotFoundException("用户名或密码错误");
     }
+
 }

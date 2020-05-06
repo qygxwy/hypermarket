@@ -1,37 +1,35 @@
 package com.kuo.hypermarket.controller;
 
+
 import com.kuo.hypermarket.common.api.CommonResult;
 import com.kuo.hypermarket.service.UmsMemberService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author wangfangfang
- * @Title: UmsMemberController
- * @Description: 会员登录注册Controller
- * @date 2020/4/2610:49 下午
- * @since 1.8
+ * <p>
+ * 会员表 前端控制器
+ * </p>
+ *
+ * @author qygxwy
+ * @since 2020-05-05
  */
-@Controller
-@Api(tags = "UmsMemberController", description = "会员登录注册管理")
-@RequestMapping("/sso")
+@Api(tags = "UmsMemberController", produces = "会员登录注册管理")
+@RestController
+@RequestMapping("/hypermarket/sso")
 public class UmsMemberController {
     @Value("${jwt.tokenHeader}")
     private String tokenHeader;
     @Value("${jwt.tokenHead}")
     private String tokenHead;
-    @Autowired
+    @Resource
     private UmsMemberService memberService;
 
     @ApiOperation("会员注册")
@@ -54,7 +52,7 @@ public class UmsMemberController {
         if (token == null) {
             return CommonResult.validateFailed("用户名或密码错误");
         }
-        Map<String, String> tokenMap = new HashMap<>();
+        Map<String, String> tokenMap = new HashMap<>(2);
         tokenMap.put("token", token);
         tokenMap.put("tokenHead", tokenHead);
         return CommonResult.success(tokenMap);
@@ -93,4 +91,6 @@ public class UmsMemberController {
         tokenMap.put("tokenHead", tokenHead);
         return CommonResult.success(tokenMap);
     }
+
 }
+

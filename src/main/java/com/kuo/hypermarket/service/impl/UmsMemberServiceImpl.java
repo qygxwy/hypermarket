@@ -1,13 +1,14 @@
 package com.kuo.hypermarket.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.kuo.hypermarket.common.exception.Asserts;
 import com.kuo.hypermarket.dto.MemberDetails;
-import com.kuo.hypermarket.mbg.mapper.UmsMemberLevelMapper;
-import com.kuo.hypermarket.mbg.mapper.UmsMemberMapper;
-import com.kuo.hypermarket.mbg.model.UmsMember;
-import com.kuo.hypermarket.mbg.model.UmsMemberExample;
-import com.kuo.hypermarket.mbg.model.UmsMemberLevel;
-import com.kuo.hypermarket.mbg.model.UmsMemberLevelExample;
+import com.kuo.hypermarket.entity.UmsMember;
+import com.kuo.hypermarket.entity.UmsMemberExample;
+import com.kuo.hypermarket.entity.UmsMemberLevel;
+import com.kuo.hypermarket.entity.UmsMemberLevelExample;
+import com.kuo.hypermarket.mapper.UmsMemberLevelMapper;
+import com.kuo.hypermarket.mapper.UmsMemberMapper;
 import com.kuo.hypermarket.service.RedisService;
 import com.kuo.hypermarket.service.UmsMemberService;
 import com.kuo.hypermarket.util.JwtTokenUtil;
@@ -33,21 +34,22 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * @author wangfangfang
- * @Title: UmsMemberServiceImpl
- * @Description: 会员管理service实现类
- * @date 2020/4/2610:56 下午
- * @since 1.8
+ * <p>
+ * 会员表 服务实现类
+ * </p>
+ *
+ * @author qygxwy
+ * @since 2020-05-05
  */
 @Service
-public class UmsMemberServiceImpl implements UmsMemberService {
-    private static final Logger LOGGER = LoggerFactory.getLogger(UmsMemberServiceImpl.class);
+public class UmsMemberServiceImpl extends ServiceImpl<UmsMemberMapper, UmsMember> implements UmsMemberService {
+    private static final Logger LOGGER = LoggerFactory.getLogger(com.kuo.hypermarket.service.impl.UmsMemberServiceImpl.class);
     @Autowired
     private PasswordEncoder passwordEncoder;
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
     @Autowired
-    private UmsMemberMapper memberMapper;
+    private com.kuo.hypermarket.mbg.mapper.UmsMemberMapper memberMapper;
     @Autowired
     private UmsMemberLevelMapper memberLevelMapper;
     @Autowired
@@ -191,4 +193,5 @@ public class UmsMemberServiceImpl implements UmsMemberService {
         String realAuthCode = redisService.get(REDIS_KEY_PREFIX_AUTH_CODE + telephone);
         return authCode.equals(realAuthCode);
     }
+
 }

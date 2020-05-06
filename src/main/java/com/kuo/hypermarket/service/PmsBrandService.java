@@ -1,51 +1,24 @@
 package com.kuo.hypermarket.service;
 
-import com.kuo.hypermarket.dto.PmsBrandParam;
-import com.kuo.hypermarket.mbg.model.PmsBrand;
-import org.springframework.transaction.annotation.Transactional;
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.kuo.hypermarket.entity.PmsBrand;
 
 import java.util.List;
 
 /**
- * @author wangfangfang
+ * <p>
+ * 品牌表 服务类
+ * </p>
+ *
+ * @author qygxwy
+ * @since 2020-05-05
  */
-public interface PmsBrandService {
-
-    /**
-     * 获取所有品牌
-     */
-    List<PmsBrand> listAllBrand();
-
-    /**
-     * 创建品牌
-     */
-    int createBrand(PmsBrandParam pmsBrandParam);
-
-    /**
-     * 修改品牌
-     */
-    @Transactional
-    int updateBrand(Long id, PmsBrandParam pmsBrandParam);
-
-    /**
-     * 删除品牌
-     */
-    int deleteBrand(Long id);
-
-    /**
-     * 批量删除品牌
-     */
-    int deleteBrand(List<Long> ids);
+public interface PmsBrandService extends IService<PmsBrand> {
 
     /**
      * 分页查询品牌
      */
     List<PmsBrand> listBrand(String keyword, int pageNum, int pageSize);
-
-    /**
-     * 获取品牌
-     */
-    PmsBrand getBrand(Long id);
 
     /**
      * 修改显示状态

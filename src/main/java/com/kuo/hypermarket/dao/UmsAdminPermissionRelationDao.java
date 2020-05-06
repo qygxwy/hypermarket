@@ -1,6 +1,6 @@
 package com.kuo.hypermarket.dao;
 
-import com.kuo.hypermarket.mbg.model.UmsAdminPermissionRelation;
+import com.kuo.hypermarket.entity.UmsAdminPermissionRelation;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

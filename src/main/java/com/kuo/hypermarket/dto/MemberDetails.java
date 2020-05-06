@@ -1,6 +1,6 @@
 package com.kuo.hypermarket.dto;
 
-import com.kuo.hypermarket.mbg.model.UmsMember;
+import com.kuo.hypermarket.entity.UmsMember;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

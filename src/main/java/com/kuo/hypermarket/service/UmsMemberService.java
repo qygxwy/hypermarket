@@ -1,14 +1,19 @@
 package com.kuo.hypermarket.service;
 
-import com.kuo.hypermarket.mbg.model.UmsMember;
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.kuo.hypermarket.entity.UmsMember;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * 会员管理service
- * @author wangfangfang
+ * <p>
+ * 会员表 服务类
+ * </p>
+ *
+ * @author qygxwy
+ * @since 2020-05-05
  */
-public interface UmsMemberService {
+public interface UmsMemberService extends IService<UmsMember> {
     /**
      * 根据用户名获取会员
      */
@@ -61,4 +66,5 @@ public interface UmsMemberService {
      * 刷新token
      */
     String refreshToken(String token);
+
 }

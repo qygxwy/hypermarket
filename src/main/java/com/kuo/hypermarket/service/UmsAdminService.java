@@ -1,21 +1,26 @@
 package com.kuo.hypermarket.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.kuo.hypermarket.dto.UmsAdminParam;
 import com.kuo.hypermarket.dto.UpdateAdminPasswordParam;
-import com.kuo.hypermarket.mbg.model.UmsAdmin;
-import com.kuo.hypermarket.mbg.model.UmsPermission;
-import com.kuo.hypermarket.mbg.model.UmsResource;
-import com.kuo.hypermarket.mbg.model.UmsRole;
+import com.kuo.hypermarket.entity.UmsAdmin;
+import com.kuo.hypermarket.entity.UmsPermission;
+import com.kuo.hypermarket.entity.UmsResource;
+import com.kuo.hypermarket.entity.UmsRole;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 /**
- * 后台管理员Service
- * @author wangfangfang
+ * <p>
+ * 后台用户表 服务类
+ * </p>
+ *
+ * @author qygxwy
+ * @since 2020-05-05
  */
-public interface UmsAdminService {
+public interface UmsAdminService extends IService<UmsAdmin> {
     /**
      * 根据用户名获取后台管理员
      */
@@ -96,4 +101,5 @@ public interface UmsAdminService {
      * 获取用户信息
      */
     UserDetails loadUserByUsername(String username);
+
 }

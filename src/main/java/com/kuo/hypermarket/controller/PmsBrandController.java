@@ -1,39 +1,38 @@
 package com.kuo.hypermarket.controller;
 
+
 import com.kuo.hypermarket.common.api.CommonPage;
 import com.kuo.hypermarket.common.api.CommonResult;
 import com.kuo.hypermarket.dto.PmsBrandParam;
-import com.kuo.hypermarket.mbg.model.PmsBrand;
+import com.kuo.hypermarket.entity.PmsBrand;
 import com.kuo.hypermarket.service.PmsBrandService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
-import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.slf4j.LoggerFactory;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import java.util.List;
 
-
 /**
- * @author wangfangfang
- * @Title: PmsBrandController
- * @Description: 品牌接口类
- * @date 2020/4/254:38 下午
- * @since 1.8
+ * <p>
+ * 品牌表 前端控制器
+ * </p>
+ *
+ * @author qygxwy
+ * @since 2020-05-05
  */
 @Api(tags = "PmsBrandController",produces = "这是什么")
-@Controller
-@RequestMapping("/brand")
+@RestController
+@RequestMapping("/hypermarket/pmsBrand")
 public class PmsBrandController {
-    @Autowired
+    @Resource
     private PmsBrandService pmsBrandService;
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(PmsBrandController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(com.kuo.hypermarket.controller.PmsBrandController.class);
 
     @ApiOperation("获取所有品牌列表")
     @RequestMapping(value = "listAll", method = RequestMethod.GET)
@@ -139,3 +138,4 @@ public class PmsBrandController {
         }
     }
 }
+
