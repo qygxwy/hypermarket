@@ -1,7 +1,7 @@
 package com.kuo.hypermarket.mapper;
 
-import com.kuo.hypermarket.entity.UmsMember;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.kuo.hypermarket.entity.UmsMember;
 
 /**
  * <p>

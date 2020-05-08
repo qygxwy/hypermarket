@@ -1,12 +1,10 @@
 package com.kuo.hypermarket.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.kuo.hypermarket.common.exception.Asserts;
 import com.kuo.hypermarket.dto.MemberDetails;
 import com.kuo.hypermarket.entity.UmsMember;
-import com.kuo.hypermarket.entity.UmsMemberExample;
-import com.kuo.hypermarket.entity.UmsMemberLevel;
-import com.kuo.hypermarket.entity.UmsMemberLevelExample;
 import com.kuo.hypermarket.mapper.UmsMemberLevelMapper;
 import com.kuo.hypermarket.mapper.UmsMemberMapper;
 import com.kuo.hypermarket.service.RedisService;
@@ -49,7 +47,7 @@ public class UmsMemberServiceImpl extends ServiceImpl<UmsMemberMapper, UmsMember
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
     @Autowired
-    private com.kuo.hypermarket.mbg.mapper.UmsMemberMapper memberMapper;
+    private UmsMemberService umsMemberService;
     @Autowired
     private UmsMemberLevelMapper memberLevelMapper;
     @Autowired
@@ -61,9 +59,9 @@ public class UmsMemberServiceImpl extends ServiceImpl<UmsMemberMapper, UmsMember
 
     @Override
     public UmsMember getByUsername(String username) {
-        UmsMemberExample example = new UmsMemberExample();
-        example.createCriteria().andUsernameEqualTo(username);
-        List<UmsMember> memberList = memberMapper.selectByExample(example);
+        QueryWrapper<UmsMember> queryWrapper = new QueryWrapper();
+        queryWrapper.eq("username",username);
+        List<UmsMember> memberList = umsMemberService.list(queryWrapper);
         if (!CollectionUtils.isEmpty(memberList)) {
             return memberList.get(0);
         }
@@ -72,7 +70,7 @@ public class UmsMemberServiceImpl extends ServiceImpl<UmsMemberMapper, UmsMember
 
     @Override
     public UmsMember getById(Long id) {
-        return memberMapper.selectByPrimaryKey(id);
+        return umsMemberService.getById(id);
     }
 
     @Override
@@ -82,10 +80,9 @@ public class UmsMemberServiceImpl extends ServiceImpl<UmsMemberMapper, UmsMember
             Asserts.fail("验证码错误");
         }
         //查询是否已有该用户
-        UmsMemberExample example = new UmsMemberExample();
-        example.createCriteria().andUsernameEqualTo(username);
-        example.or(example.createCriteria().andPhoneEqualTo(telephone));
-        List<UmsMember> umsMembers = memberMapper.selectByExample(example);
+        QueryWrapper<UmsMember> queryWrapper = new QueryWrapper();
+        queryWrapper.select(username);
+        List<UmsMember> umsMembers = umsMemberService.list(queryWrapper);
         if (!CollectionUtils.isEmpty(umsMembers)) {
             Asserts.fail("该用户已经存在");
         }
@@ -97,13 +94,13 @@ public class UmsMemberServiceImpl extends ServiceImpl<UmsMemberMapper, UmsMember
         umsMember.setCreateTime(new Date());
         umsMember.setStatus(1);
         //获取默认会员等级并设置
-        UmsMemberLevelExample levelExample = new UmsMemberLevelExample();
-        levelExample.createCriteria().andDefaultStatusEqualTo(1);
-        List<UmsMemberLevel> memberLevelList = memberLevelMapper.selectByExample(levelExample);
-        if (!CollectionUtils.isEmpty(memberLevelList)) {
-            umsMember.setMemberLevelId(memberLevelList.get(0).getId());
-        }
-        memberMapper.insert(umsMember);
+//        UmsMemberLevelExample levelExample = new UmsMemberLevelExample();
+//        levelExample.createCriteria().andDefaultStatusEqualTo(1);
+//        List<UmsMemberLevel> memberLevelList = memberLevelMapper.selectByExample(levelExample);
+//        if (!CollectionUtils.isEmpty(memberLevelList)) {
+//            umsMember.setMemberLevelId(memberLevelList.get(0).getId());
+//        }
+        umsMemberService.save(umsMember);
         umsMember.setPassword(null);
     }
 
@@ -122,9 +119,9 @@ public class UmsMemberServiceImpl extends ServiceImpl<UmsMemberMapper, UmsMember
 
     @Override
     public void updatePassword(String telephone, String password, String authCode) {
-        UmsMemberExample example = new UmsMemberExample();
-        example.createCriteria().andPhoneEqualTo(telephone);
-        List<UmsMember> memberList = memberMapper.selectByExample(example);
+        QueryWrapper<UmsMember> queryWrapper = new QueryWrapper();
+        queryWrapper.select(telephone);
+        List<UmsMember> memberList = umsMemberService.list(queryWrapper);
         if(CollectionUtils.isEmpty(memberList)){
             Asserts.fail("该账号不存在");
         }
@@ -134,7 +131,7 @@ public class UmsMemberServiceImpl extends ServiceImpl<UmsMemberMapper, UmsMember
         }
         UmsMember umsMember = memberList.get(0);
         umsMember.setPassword(passwordEncoder.encode(password));
-        memberMapper.updateByPrimaryKeySelective(umsMember);
+        umsMemberService.updateById(umsMember);
     }
 
     @Override
@@ -150,7 +147,7 @@ public class UmsMemberServiceImpl extends ServiceImpl<UmsMemberMapper, UmsMember
         UmsMember record=new UmsMember();
         record.setId(id);
         record.setIntegration(integration);
-        memberMapper.updateByPrimaryKeySelective(record);
+        umsMemberService.updateById(record);
     }
 
     @Override

@@ -50,6 +50,12 @@
             <version>5.3.1</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>3.3.1</version>
+        </dependency>
 
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -70,11 +76,11 @@
             <version>1.1.10</version>
         </dependency>
         <!-- MyBatis 生成器 -->
-        <dependency>
-            <groupId>org.mybatis.generator</groupId>
-            <artifactId>mybatis-generator-core</artifactId>
-            <version>1.4.0</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.mybatis.generator</groupId>-->
+<!--            <artifactId>mybatis-generator-core</artifactId>-->
+<!--            <version>1.4.0</version>-->
+<!--        </dependency>-->
 
         <!-- mybatis plus 自动生成器 -->
         <!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-generator -->
@@ -149,6 +155,17 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
+
+        <resources>
+            <!-- IDEA-解决: org.apache.ibatis.binding.BindingException:Invalid bound statement (not found) -->
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+        </resources>
+
     </build>
 
 </project>

@@ -1,7 +1,7 @@
 package com.kuo.hypermarket.service;
 
-import com.kuo.hypermarket.entity.CmsTopicCategory;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.kuo.hypermarket.entity.CmsHelpCategory;
 
 /**
  * <p>

@@ -11,6 +11,6 @@ import org.springframework.context.annotation.Configuration;
  * @since 1.8
  */
 @Configuration
-@MapperScan({"com.kuo.hypermarket.dao"})
+@MapperScan(basePackages = {"com.kuo.hypermarket.mapper","com.kuo.hypermarket.dao"})
 public class MyBatisConfig {
 }

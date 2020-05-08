@@ -20,8 +20,8 @@ spring:
     timeout: 3000ms
 
 mybatis:
-  mapper-locations: classpath:mapping/*.xml
-  type-aliases-package: com.kuo.hypermarket.mbg.model
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.kuo.hypermarket.entity
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 

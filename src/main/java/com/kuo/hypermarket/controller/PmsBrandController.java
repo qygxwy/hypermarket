@@ -10,6 +10,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -35,10 +36,10 @@ public class PmsBrandController {
     private static final Logger LOGGER = LoggerFactory.getLogger(com.kuo.hypermarket.controller.PmsBrandController.class);
 
     @ApiOperation("获取所有品牌列表")
-    @RequestMapping(value = "listAll", method = RequestMethod.GET)
+    @RequestMapping(value = "/listAll", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<List<PmsBrand>> getBrandList() {
-        return CommonResult.success(pmsBrandService.listAllBrand());
+        return CommonResult.success(pmsBrandService.listBrand(null,1,10));
     }
 
     @ApiOperation("添加品牌")
@@ -46,8 +47,10 @@ public class PmsBrandController {
     @ResponseBody
     public CommonResult createBrand(@Validated @RequestBody PmsBrandParam pmsBrand, BindingResult result) {
         CommonResult commonResult;
-        int count = pmsBrandService.createBrand(pmsBrand);
-        if (count == 1) {
+        PmsBrand pmsBrand1 = new PmsBrand();
+        BeanUtils.copyProperties(pmsBrand,pmsBrand1);
+        boolean count = pmsBrandService.save(pmsBrand1);
+        if (count) {
             commonResult = CommonResult.success(count);
         } else {
             commonResult = CommonResult.failed();
@@ -62,8 +65,11 @@ public class PmsBrandController {
                                @Validated @RequestBody PmsBrandParam pmsBrandParam,
                                BindingResult result) {
         CommonResult commonResult;
-        int count = pmsBrandService.updateBrand(id, pmsBrandParam);
-        if (count == 1) {
+        PmsBrand pmsBrand = new PmsBrand();
+        BeanUtils.copyProperties(pmsBrandParam,pmsBrand);
+        pmsBrand.setId(id);
+        boolean count = pmsBrandService.updateById(pmsBrand);
+        if (count) {
             commonResult = CommonResult.success(count);
         } else {
             commonResult = CommonResult.failed();
@@ -75,8 +81,10 @@ public class PmsBrandController {
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult delete(@PathVariable("id") Long id) {
-        int count = pmsBrandService.deleteBrand(id);
-        if (count == 1) {
+        PmsBrand pmsBrand = new PmsBrand();
+        pmsBrand.setId(id);
+        boolean count = pmsBrandService.removeById(pmsBrand);
+        if (count) {
             return CommonResult.success(null);
         } else {
             return CommonResult.failed();
@@ -97,15 +105,15 @@ public class PmsBrandController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<PmsBrand> getItem(@PathVariable("id") Long id) {
-        return CommonResult.success(pmsBrandService.getBrand(id));
+        return CommonResult.success(pmsBrandService.getById(id));
     }
 
     @ApiOperation(value = "批量删除品牌")
     @RequestMapping(value = "/delete/batch", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult deleteBatch(@RequestParam("ids") List<Long> ids) {
-        int count = pmsBrandService.deleteBrand(ids);
-        if (count > 0) {
+        boolean count = pmsBrandService.removeByIds(ids);
+        if (count) {
             return CommonResult.success(count);
         } else {
             return CommonResult.failed();

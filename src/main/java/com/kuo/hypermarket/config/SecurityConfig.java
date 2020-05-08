@@ -1,5 +1,6 @@
 package com.kuo.hypermarket.config;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.kuo.hypermarket.component.JwtAuthenticationTokenFilter;
 import com.kuo.hypermarket.component.RestAuthenticationEntryPoint;
 import com.kuo.hypermarket.component.RestfulAccessDeniedHandler;
@@ -63,7 +64,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/swagger-resources/**",
                         "/v2/api-docs/**")
                 .permitAll()
-                .antMatchers("/admin/login", "/admin/register","/sso/**")// 对登录注册要允许匿名访问
+                .antMatchers("/admin/login", "/admin/register","/hypermarket/sso/**")// 对登录注册要允许匿名访问
                 .permitAll()
                 .antMatchers(HttpMethod.OPTIONS)//跨域请求会先进行一次options请求
                 .permitAll()
@@ -99,9 +100,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new UserDetailsService() {
             @Override
             public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-                UmsAdminExample example = new UmsAdminExample();
-                example.createCriteria().andUsernameEqualTo(username);
-                List<UmsAdmin> umsAdminList = umsAdminMapper.selectByExample(example);
+                QueryWrapper<UmsAdmin> umsAdminQueryWrapper = new QueryWrapper<>();
+                umsAdminQueryWrapper.eq("user_name",username);
+                List<UmsAdmin> umsAdminList = umsAdminMapper.selectList(umsAdminQueryWrapper);
                 if (umsAdminList != null && umsAdminList.size() > 0) {
                     return new AdminUserDetails(umsAdminList.get(0));
                 }
